@@ -4,7 +4,10 @@ from typing import *
 
 #frontend inputs
 class Post(BaseModel):
+    pid: int
     post: str
+    class Config:
+        orm_mode = True
 
 class Signup(BaseModel):
     username: str
@@ -17,10 +20,15 @@ class Update(BaseModel):
 class Token_data(BaseModel):
     studentnr : Optional[int] = None
 
+class Comment(BaseModel):
+    comment: str
+
 #Response structures
 
-class Comment(BaseModel):
-    coomment: str
+class CommentReturn(BaseModel):
+    post: str
+    username: str
+    comment: str
     class Config:
         orm_mode = True
 
@@ -33,10 +41,9 @@ class Return(BaseModel):
 class Return2(Return):
     pass
     pid: int
-    comment: Comment
+    #comments: CommentReturn
     class Config:
         orm_mode = True
-
 
 class MyPost(BaseModel):
     pid: int

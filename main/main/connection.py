@@ -1,6 +1,6 @@
 from fastapi import FastAPI, status, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import post, login, likes, signup
+from .routers import post, login, signup, comments
 from . import models
 from sqlalchemy import engine
 from .database import engine
@@ -18,7 +18,7 @@ app = FastAPI()
 app.include_router(signup.router)
 app.include_router(post.router)
 app.include_router(login.router)
-
+app.include_router(comments.router)
 
 origins = ['*']
 
